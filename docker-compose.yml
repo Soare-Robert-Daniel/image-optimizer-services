@@ -1,0 +1,41 @@
+version: "3.3"
+
+services:
+  primary_db:
+    image: mariadb
+    volumes:
+      - ./db:/var/lib/mysql
+    ports:
+      - 3306:3306
+    expose:
+      - 3306
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_DATABASE: test
+      MYSQL_USER: test
+      MYSQL_PASSWORD: test
+  backend:
+    depends_on:
+      - primary_db
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    command: npm run start:dev
+    volumes:
+      - ./backend:/usr/src/app
+    ports:
+      - 8500:8500
+    environment:
+      DB_NAME: test
+      DB_USER: test
+      DB_PASSWORD: test
+      DB_ROOT_PASSWORD: admin
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    command: npm run dev
+    ports:
+      - 3000:3000
+    volumes:
+      - ./frontend:/usr/src/app
