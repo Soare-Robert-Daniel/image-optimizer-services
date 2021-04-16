@@ -1,0 +1,39 @@
+
+
+.form-primary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .input-form {
+        padding: 20px 20px;
+        background-color: blue;
+        max-width: 600px;
+        border-radius: 10px;
+    
+        .input-link {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+
+            label {
+                padding: 10px 10px;
+                width: max-content;
+                font-size: 1.5rem;
+            }
+
+            input {
+                width: fit-content;
+                height: 30px;
+                margin: 0px 10px;
+            }
+
+            button {
+                padding: 7px 20px;
+                border-radius: 10%;
+                background-color: green;
+            }
+        }
+    }
+}

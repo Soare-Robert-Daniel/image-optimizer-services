@@ -1,12 +1,12 @@
 FROM node:15
 
-WORKDIR /usr/src/app
+WORKDIR /home/app
 
 COPY package*.json ./
 
-RUN npm install -g nodemon
 RUN npm install
 
 COPY . .
 
-EXPOSE 8500
+EXPOSE 5000
+EXPOSE 35729

@@ -18,24 +18,31 @@ services:
     depends_on:
       - primary_db
     build:
-      context: ./backend
+      context: ./backend-v2
       dockerfile: Dockerfile
-    command: npm run start:dev
+    command: denon start
     volumes:
-      - ./backend:/usr/src/app
+      - ./backend-v2:/home/app
     ports:
       - 8500:8500
+    expose:
+      - 8500
     environment:
       DB_NAME: test
       DB_USER: test
       DB_PASSWORD: test
       DB_ROOT_PASSWORD: admin
+      DEV_DB_MODE: save # clean up the databse
   frontend:
     build:
-      context: ./frontend
+      context: ./frontend-v2
       dockerfile: Dockerfile
-    command: npm run dev
+    command: tail -f /dev/null
     ports:
-      - 3000:3000
+      - 5000:5000
+      - 35729:35729 # livereload port
+    expose:
+      - 35729 #livereload port
+      - 5000
     volumes:
-      - ./frontend:/usr/src/app
+      - ./frontend-v2:/home/app

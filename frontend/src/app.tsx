@@ -1,20 +1,30 @@
 import { Logo } from './logo'
+import './app.scss'
+import { useState } from 'preact/hooks'
 
-export function App() {
+export const App = () => {
+
+  const imgLinks = useState<string[]>([])
+
   return (
     <>
-      <Logo />
-      <p>Hello Vite + Preact!</p>
-      <p>
-        <a
-          class="link"
-          href="https://preactjs.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn Preact
-        </a>
-      </p>
+      <div className="form-primary">
+      <div className="input-form">
+        <div className="input-link">
+          <label>
+            Add image link
+          </label>
+          <input>
+
+          </input>
+          <button>
+            Add
+          </button>
+        </div>
+
+      </div>
+      </div>
+     
     </>
   )
 }
